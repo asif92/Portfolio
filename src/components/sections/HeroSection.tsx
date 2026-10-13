@@ -84,7 +84,7 @@ export function HeroSection() {
               variants={fadeUpVariants}
               className="mb-6 font-mono text-sm tracking-[0.15em] text-cyan-core/80 uppercase"
             >
-              // {siteConfig.title}
+              {"//"} {siteConfig.title}
             </motion.p>
 
             {/* Bio */}

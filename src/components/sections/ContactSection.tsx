@@ -33,7 +33,7 @@ export function ContactSection() {
               <div className="flex items-center gap-2 mb-6 pb-4 border-b border-white/10">
                 <Terminal size={14} className="text-cyan-core" />
                 <span className="font-mono text-xs text-ceramic-muted/60 tracking-wider">
-                  {siteConfig.character.name} // UPLINK TERMINAL
+                  {siteConfig.character.name} {"//"} UPLINK TERMINAL
                 </span>
                 <div className="ml-auto flex gap-1.5" aria-hidden="true">
                   <span className="h-2 w-2 rounded-full bg-red-500/60" />

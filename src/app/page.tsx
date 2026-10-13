@@ -62,7 +62,7 @@ export default function HomePage() {
             <div className="flex items-center gap-2 font-mono text-[10px] text-ceramic-muted/40">
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-core animate-pulse-slow" aria-hidden="true" />
               <span className="tracking-widest">
-                {siteConfig.character.name} {siteConfig.character.version} // ONLINE
+                {siteConfig.character.name} {siteConfig.character.version} {"//"} ONLINE
               </span>
             </div>
           </div>
