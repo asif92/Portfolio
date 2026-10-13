@@ -28,6 +28,8 @@ export {
   RobotAntenna,
 };
 
+const IDLE_CURSOR = { x: 0, y: 0 };
+
 export type RobotState = 'idle' | 'floating' | 'hover' | 'thinking' | 'talking';
 
 export interface RobotProps {
@@ -109,6 +111,22 @@ export function Robot({
         floatY = Math.sin(t * 1.4) * 0.018;
       }
 
+      // Whole-body lean toward the cursor (subtle, so the head leads the motion)
+      const m = interactive ? mousePosition.current : IDLE_CURSOR;
+      const leanY = -m.x * 0.18;
+      const leanX = -m.y * 0.06;
+      floatGroupRef.current.rotation.y = THREE.MathUtils.lerp(
+        floatGroupRef.current.rotation.y,
+        leanY,
+        0.06
+      );
+      floatGroupRef.current.position.x = THREE.MathUtils.lerp(
+        floatGroupRef.current.position.x,
+        m.x * 0.08,
+        0.05
+      );
+      pitchX += leanX;
+
       floatGroupRef.current.position.y = THREE.MathUtils.lerp(
         floatGroupRef.current.position.y,
         floatY,
@@ -147,10 +165,11 @@ export function Robot({
     onHover?.(false);
   };
 
-  // Cursor coordinates for head/eye IK
-  const cursorTarget = interactive
-    ? { x: mousePosition.current.x, y: mousePosition.current.y }
-    : { x: 0, y: 0 };
+  // Cursor coordinates for head/eye IK.
+  // IMPORTANT: pass the live, mutable ref object (mutated in place by
+  // useMousePosition every frame) so the head/eyes read fresh values inside
+  // their own useFrame loops. Copying x/y here would freeze them at render time.
+  const cursorTarget = interactive ? mousePosition.current : IDLE_CURSOR;
 
   return (
     <group

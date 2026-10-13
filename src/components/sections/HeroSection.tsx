@@ -1,11 +1,13 @@
 'use client';
 
+import { useCallback, useState } from 'react';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { ArrowDown, Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
 import { siteConfig } from '@/data/site-config';
 import { CyberButton } from '@/components/ui/CyberButton';
 import { HudTag, NodeLabel } from '@/components/ui/HudElements';
+import { SiteLoader } from '@/components/ui/SiteLoader';
 import { fadeUpVariants, containerVariants, viewportOnce } from '@/lib/motion-variants';
 
 // Dynamically import the 3D canvas — SSR disabled
@@ -22,7 +24,16 @@ const HeroScene = dynamic(() => import('./HeroScene'), { ssr: false });
  * - Social links and CTA
  */
 export function HeroSection() {
+  // Becomes true once the robot scene has rendered; the loader covers the page
+  // until then, and the hero text animates in only after the loader exits.
+  const [sceneReady, setSceneReady] = useState(false);
+  const [revealed, setRevealed] = useState(false);
+  const handleReady = useCallback(() => setSceneReady(true), []);
+  const handleRevealed = useCallback(() => setRevealed(true), []);
+
   return (
+    <>
+    <SiteLoader ready={sceneReady} onDone={handleRevealed} />
     <section
       id="hero"
       className="relative min-h-screen w-full overflow-hidden flex items-center"
@@ -44,7 +55,7 @@ export function HeroSection() {
       <div
         className="absolute inset-0 z-0 pointer-events-auto"
       >
-        <HeroScene />
+        <HeroScene onReady={handleReady} />
       </div>
 
       {/* ── Content Layer ───────────────────────────────── */}
@@ -53,7 +64,7 @@ export function HeroSection() {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            animate={revealed ? 'visible' : 'hidden'}
             className="max-w-xl pointer-events-auto"
           >
             {/* System status tag */}
@@ -143,8 +154,8 @@ export function HeroSection() {
       {/* ── Telemetry HUD — bottom-right corner ─────────── */}
       <motion.div
         initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
+        animate={revealed ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
         className="content-layer absolute bottom-8 right-6 hidden lg:flex flex-col items-end gap-2"
         aria-hidden="true"
       >
@@ -164,8 +175,8 @@ export function HeroSection() {
       {/* ── Scroll Button (Interactive) ────────────────── */}
       <motion.button
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 1 }}
+        animate={{ opacity: revealed ? 1 : 0 }}
+        transition={{ delay: 1.2, duration: 1 }}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => {
@@ -187,5 +198,6 @@ export function HeroSection() {
         </motion.div>
       </motion.button>
     </section>
+    </>
   );
 }

@@ -97,14 +97,19 @@ export function RobotHead({
       />
 
       {/* ── 2. RECESSED DARK VISOR BEZEL ────────────────── */}
-      <mesh material={darkMechanicalMaterial} position={[0, 0.02, 0.28]}>
-        <boxGeometry args={[0.72, 0.54, 0.1]} />
-      </mesh>
+      {/* Rounded (not boxy) so the corners never poke outside the curved helmet */}
+      <RoundedBox
+        args={[0.68, 0.5, 0.1]}
+        radius={0.16}
+        smoothness={8}
+        material={darkMechanicalMaterial}
+        position={[0, 0.02, 0.27]}
+      />
 
       {/* ── 3. DARK GLOSSY GLASS SCREEN ─────────────────── */}
       <RoundedBox
-        args={[0.68, 0.5, 0.04]}
-        radius={0.16}
+        args={[0.64, 0.46, 0.04]}
+        radius={0.14}
         smoothness={8}
         material={visorGlassMaterial}
         position={[0, 0.02, 0.32]}

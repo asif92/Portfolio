@@ -4,15 +4,22 @@ import { useState } from 'react';
 import { SceneCanvas } from '@/components/3d/SceneCanvas';
 import { Robot, type RobotState } from '@/components/3d/Robot';
 import { AIEnvironment } from '@/components/3d/AIEnvironment';
+import { CameraRig } from '@/components/3d/CameraRig';
+import { SceneReady } from '@/components/3d/SceneReady';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
+
+interface HeroSceneProps {
+  /** Fired once the robot + environment have rendered their first frames */
+  onReady?: () => void;
+}
 
 /**
  * HeroScene — the full 3D laboratory scene for the Hero section.
  * Renders the abstract AI laboratory environment in deep space
  * with the procedural Robot (A.R.I.A.) as the visual focal point.
  */
-export default function HeroScene() {
-  const { isMobile, isTablet } = useMediaQuery();
+export default function HeroScene({ onReady }: HeroSceneProps) {
+  const { isMobile, isTablet, prefersReducedMotion } = useMediaQuery();
   const [robotState, setRobotState] = useState<RobotState>('floating');
 
   // Responsive 3D layout coordinates
@@ -39,6 +46,12 @@ export default function HeroScene() {
       cameraPosition={[0, 0.2, 5.2]}
       cameraFov={40}
     >
+      {/* Camera parallax follows the cursor */}
+      <CameraRig disabled={prefersReducedMotion} />
+
+      {/* Signals the loader once the scene has actually rendered */}
+      {onReady && <SceneReady onReady={onReady} />}
+
       {/* ── Abstract AI Laboratory Deep Space Environment ── */}
       <AIEnvironment />
 
