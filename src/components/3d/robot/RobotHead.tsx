@@ -45,8 +45,10 @@ export function RobotHead({
     const maxPitch = 0.32;
     const maxYaw = 0.55;
 
-    let targetRotY = -cursorTarget.x * maxYaw;
-    let targetRotX = cursorTarget.y * maxPitch;
+    // +rotation.y turns the face toward +x (right); +rotation.x pitches it DOWN,
+    // so looking up (cursor y > 0) needs a negative pitch.
+    let targetRotY = cursorTarget.x * maxYaw;
+    let targetRotX = -cursorTarget.y * maxPitch;
     let targetRotZ = 0;
 
     if (isThinking) {

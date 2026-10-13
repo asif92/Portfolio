@@ -21,11 +21,12 @@ export function CameraRig({ amount = [0.45, 0.25], disabled = false }: CameraRig
   // Resting camera position captured once (stable across renders)
   const base = useMemo(() => camera.position.clone(), [camera]);
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     if (disabled) return;
     const { x, y } = mouse.current;
-    camera.position.x = THREE.MathUtils.lerp(camera.position.x, base.x + x * amount[0], 0.05);
-    camera.position.y = THREE.MathUtils.lerp(camera.position.y, base.y + y * amount[1], 0.05);
+    const dt = Math.min(delta, 0.05);
+    camera.position.x = THREE.MathUtils.damp(camera.position.x, base.x + x * amount[0], 2.5, dt);
+    camera.position.y = THREE.MathUtils.damp(camera.position.y, base.y + y * amount[1], 2.5, dt);
     // Keep looking at the scene centre while the camera drifts
     camera.lookAt(0, base.y, 0);
   });

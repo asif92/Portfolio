@@ -42,6 +42,7 @@ export function ParticleField({
         speed={speed}
         color={color}
         reducedMotion={reducedMotion}
+        seed={101}
       />
 
       {/* ── Distant Deep-Space Star Dust (Faint Ice Blue) ─ */}
@@ -52,6 +53,7 @@ export function ParticleField({
         speed={speed * 0.5}
         color="#88CCFF"
         reducedMotion={reducedMotion}
+        seed={202}
       />
     </group>
   );

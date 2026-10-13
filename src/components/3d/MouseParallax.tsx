@@ -31,15 +31,16 @@ export function MouseParallax({
   const groupRef = useRef<THREE.Group>(null);
   const mouse = useMousePosition(0.08);
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     const g = groupRef.current;
     if (!g || disabled) return;
+    const dt = Math.min(delta, 0.05); // clamp so a tab-switch can't cause a jump
     const dir = invert ? -1 : 1;
     const { x, y } = mouse.current;
-    g.position.x = THREE.MathUtils.lerp(g.position.x, x * strength * dir, 0.06);
-    g.position.y = THREE.MathUtils.lerp(g.position.y, y * strength * 0.6 * dir, 0.06);
-    g.rotation.y = THREE.MathUtils.lerp(g.rotation.y, x * tilt * dir, 0.05);
-    g.rotation.x = THREE.MathUtils.lerp(g.rotation.x, -y * tilt * 0.6 * dir, 0.05);
+    g.position.x = THREE.MathUtils.damp(g.position.x, x * strength * dir, 3, dt);
+    g.position.y = THREE.MathUtils.damp(g.position.y, y * strength * 0.6 * dir, 3, dt);
+    g.rotation.y = THREE.MathUtils.damp(g.rotation.y, x * tilt * dir, 2.5, dt);
+    g.rotation.x = THREE.MathUtils.damp(g.rotation.x, -y * tilt * 0.6 * dir, 2.5, dt);
   });
 
   return <group ref={groupRef}>{children}</group>;

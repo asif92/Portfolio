@@ -3,6 +3,7 @@
 import { useRef, useMemo, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { createRng } from '@/lib/seeded-random';
 
 export interface DataNodeData {
   position: [number, number, number];
@@ -35,11 +36,13 @@ export function DataNodes({
   reducedMotion = false,
   onNodesReady,
 }: DataNodesProps) {
+  const [sx, sy, sz] = spread;
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const dummy = useMemo(() => new THREE.Object3D(), []);
 
   // Precompute static node attributes once
   const nodes = useMemo<DataNodeData[]>(() => {
+    const rand = createRng(7);
     const data: DataNodeData[] = [];
     const colors = [
       new THREE.Color('#00F0FF'), // Bright cyan
@@ -50,9 +53,9 @@ export function DataNodes({
 
     for (let i = 0; i < count; i++) {
       // Keep nodes distributed around the scene, avoiding the immediate robot center
-      let x = (Math.random() - 0.5) * spread[0];
-      let y = (Math.random() - 0.5) * spread[1] + 0.5;
-      let z = (Math.random() - 0.5) * spread[2] - 2;
+      let x = (rand() - 0.5) * sx;
+      let y = (rand() - 0.5) * sy + 0.5;
+      let z = (rand() - 0.5) * sz - 2;
 
       // Radial clearance around the robot center (x: 1.2, y: 0)
       const distFromRobot = Math.hypot(x - 1.2, y);
@@ -62,20 +65,20 @@ export function DataNodes({
 
       data.push({
         position: [x, y, z],
-        baseScale: 0.5 + Math.random() * 0.7,
+        baseScale: 0.5 + rand() * 0.7,
         rotationSpeed: [
-          (Math.random() - 0.5) * 0.8,
-          (Math.random() - 0.5) * 0.8,
-          (Math.random() - 0.5) * 0.8,
+          (rand() - 0.5) * 0.8,
+          (rand() - 0.5) * 0.8,
+          (rand() - 0.5) * 0.8,
         ],
-        floatPhase: Math.random() * Math.PI * 2,
-        floatSpeed: 0.6 + Math.random() * 0.8,
-        color: colors[Math.floor(Math.random() * colors.length)],
+        floatPhase: rand() * Math.PI * 2,
+        floatSpeed: 0.6 + rand() * 0.8,
+        color: colors[Math.floor(rand() * colors.length)],
       });
     }
 
     return data;
-  }, [count, spread]);
+  }, [count, sx, sy, sz]);
 
   // Pass initial positions array to parents (for NeuralConnections)
   useEffect(() => {
@@ -93,12 +96,13 @@ export function DataNodes({
   // Initialize instances and colors on mount
   useEffect(() => {
     if (!meshRef.current) return;
+    const rand = createRng(11);
 
     for (let i = 0; i < count; i++) {
       const node = nodes[i];
       dummy.position.set(...node.position);
       dummy.scale.setScalar(node.baseScale * 0.12);
-      dummy.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
+      dummy.rotation.set(rand() * Math.PI, rand() * Math.PI, 0);
       dummy.updateMatrix();
 
       meshRef.current.setMatrixAt(i, dummy.matrix);

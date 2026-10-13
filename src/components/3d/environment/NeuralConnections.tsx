@@ -3,6 +3,7 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { createRng } from '@/lib/seeded-random';
 
 interface NeuralConnectionsProps {
   count?: number;
@@ -28,16 +29,18 @@ export function NeuralConnections({
   color = '#00F0FF',
   reducedMotion = false,
 }: NeuralConnectionsProps) {
+  const [sx, sy, sz] = spread;
   const lineMeshRef = useRef<THREE.LineSegments>(null);
 
   // Generate node cluster and connect neighbors
   const { lineGeometry, material } = useMemo(() => {
+    const rand = createRng(23);
     // Generate cluster points
     const points: THREE.Vector3[] = [];
     for (let i = 0; i < count; i++) {
-      let x = (Math.random() - 0.5) * spread[0];
-      let y = (Math.random() - 0.5) * spread[1] + 0.5;
-      let z = (Math.random() - 0.5) * spread[2] - 2;
+      let x = (rand() - 0.5) * sx;
+      let y = (rand() - 0.5) * sy + 0.5;
+      let z = (rand() - 0.5) * sz - 2;
 
       // Keep clearance around the central robot
       if (Math.hypot(x - 1.2, y) < 2.0) {
@@ -76,7 +79,7 @@ export function NeuralConnections({
     });
 
     return { lineGeometry: geo, material: mat };
-  }, [count, maxDistance, spread, color]);
+  }, [count, maxDistance, sx, sy, sz, color]);
 
   // Subtle neural pulse animation
   useFrame((state) => {

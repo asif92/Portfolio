@@ -3,6 +3,7 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { createRng } from '@/lib/seeded-random';
 
 interface FloatingParticlesProps {
   count?: number;
@@ -11,6 +12,8 @@ interface FloatingParticlesProps {
   speed?: number;
   color?: string;
   reducedMotion?: boolean;
+  /** Seed for the deterministic layout (different per layer) */
+  seed?: number;
 }
 
 /**
@@ -29,31 +32,36 @@ export function FloatingParticles({
   speed = 0.035,
   color = '#00F0FF',
   reducedMotion = false,
+  seed = 1,
 }: FloatingParticlesProps) {
+  // Depend on primitive values, NOT the spread array (a new array literal every
+  // render would regenerate every particle => visible flicker).
+  const [sx, sy, sz] = spread;
   const pointsRef = useRef<THREE.Points>(null);
   const timeRef = useRef(0);
 
   // Preallocate typed arrays for positions, velocities, and phase offsets
   const { positions, velocities, phases } = useMemo(() => {
+    const rand = createRng(seed);
     const pos = new Float32Array(count * 3);
     const vel = new Float32Array(count * 3);
     const pha = new Float32Array(count);
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
-      pos[i3 + 0] = (Math.random() - 0.5) * spread[0];
-      pos[i3 + 1] = (Math.random() - 0.5) * spread[1] + 0.5;
-      pos[i3 + 2] = (Math.random() - 0.5) * spread[2] - 2;
+      pos[i3 + 0] = (rand() - 0.5) * sx;
+      pos[i3 + 1] = (rand() - 0.5) * sy + 0.5;
+      pos[i3 + 2] = (rand() - 0.5) * sz - 2;
 
-      vel[i3 + 0] = (Math.random() - 0.5) * speed;
-      vel[i3 + 1] = (Math.random() - 0.5) * speed * 0.7;
-      vel[i3 + 2] = (Math.random() - 0.5) * speed * 0.4;
+      vel[i3 + 0] = (rand() - 0.5) * speed;
+      vel[i3 + 1] = (rand() - 0.5) * speed * 0.7;
+      vel[i3 + 2] = (rand() - 0.5) * speed * 0.4;
 
-      pha[i] = Math.random() * Math.PI * 2;
+      pha[i] = rand() * Math.PI * 2;
     }
 
     return { positions: pos, velocities: vel, phases: pha };
-  }, [count, spread, speed]);
+  }, [count, sx, sy, sz, speed, seed]);
 
   const geometry = useMemo(() => {
     const geo = new THREE.BufferGeometry();
@@ -81,9 +89,9 @@ export function FloatingParticles({
 
     const posAttr = pointsRef.current.geometry.attributes.position;
     const arr = posAttr.array as Float32Array;
-    const halfX = spread[0] / 2;
-    const halfY = spread[1] / 2;
-    const halfZ = spread[2] / 2;
+    const halfX = sx / 2;
+    const halfY = sy / 2;
+    const halfZ = sz / 2;
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;

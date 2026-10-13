@@ -113,7 +113,7 @@ export function Robot({
 
       // Whole-body lean toward the cursor (subtle, so the head leads the motion)
       const m = interactive ? mousePosition.current : IDLE_CURSOR;
-      const leanY = -m.x * 0.18;
+      const leanY = m.x * 0.18;
       const leanX = -m.y * 0.06;
       floatGroupRef.current.rotation.y = THREE.MathUtils.lerp(
         floatGroupRef.current.rotation.y,
