@@ -1,6 +1,7 @@
 /**
  * Projects Data
- * Populate this array with your real projects.
+ * TODO: replace these sample projects with your real work (add real
+ * demo/github links; add `metrics` only for numbers you can verify).
  */
 
 export interface Project {
@@ -35,14 +36,7 @@ export const projects: Project[] = [
     status: 'live',
     featured: true,
     links: {
-      demo: 'https://example.com',
-      github: 'https://github.com',
     },
-    metrics: [
-      { label: 'Requests/sec', value: '4.2M' },
-      { label: 'P99 Latency', value: '8ms' },
-      { label: 'Uptime', value: '99.99%' },
-    ],
   },
   {
     id: 'proj-002',
@@ -55,12 +49,7 @@ export const projects: Project[] = [
     status: 'live',
     featured: true,
     links: {
-      demo: 'https://example.com',
     },
-    metrics: [
-      { label: 'Data Points', value: '1M+' },
-      { label: 'Render FPS', value: '60' },
-    ],
   },
   {
     id: 'proj-003',
@@ -73,7 +62,6 @@ export const projects: Project[] = [
     status: 'live',
     featured: true,
     links: {
-      github: 'https://github.com',
     },
   },
 ];

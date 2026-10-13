@@ -18,7 +18,6 @@ export const siteConfig = {
   links: {
     github: 'https://github.com/asif92',
     linkedin: 'https://linkedin.com/in/asifsharifshahid/',
-    twitter: 'https://twitter.com/yourusername',
     resume: '/resume.pdf',
   },
 
@@ -36,12 +35,13 @@ export const siteConfig = {
     { id: '01', label: 'Awakening', href: '#hero' },
     { id: '02', label: 'Systems',   href: '#projects' },
     { id: '03', label: 'Matrix',    href: '#skills' },
-    { id: '04', label: 'Log',       href: '#experience' },
+    // Re-enable once src/data/experience.ts has entries:
+    // { id: '04', label: 'Log',       href: '#experience' },
     { id: '05', label: 'Uplink',    href: '#contact' },
   ],
 
   // ── SEO & Meta ─────────────────────────────────────────────
-  url: 'https://yourdomain.com',
+  url: 'https://asifsharif.tecxra.com',
   ogImage: '/images/og.png',
   keywords: ['Asif Sharif Shahid', 'full-stack AI engineer', 'MERN stack', 'Python', 'Django', 'LLM', 'RAG', 'AI agents', 'portfolio'] as string[],
 } as const;

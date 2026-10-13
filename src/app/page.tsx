@@ -2,6 +2,7 @@ import { NavBar } from '@/components/navigation/NavBar';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ProjectsSection } from '@/components/sections/ProjectsSection';
 import { SkillsSection } from '@/components/sections/SkillsSection';
+import { ExperienceSection } from '@/components/sections/ExperienceSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { siteConfig } from '@/data/site-config';
 
@@ -42,6 +43,9 @@ export default function HomePage() {
         </div>
 
         <SkillsSection />
+
+        {/* Renders only when src/data/experience.ts has entries */}
+        <ExperienceSection />
 
         <div className="section-wrapper py-0">
           <div className="content-container">
