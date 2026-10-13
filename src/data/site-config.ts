@@ -6,18 +6,18 @@
 
 export const siteConfig = {
   // ── Personal Info ──────────────────────────────────────────
-  name: 'Your Name',
-  title: 'Senior Software Engineer',
+  name: 'Asif Sharif Shahid',
+  title: 'Full-stack AI Engineer',
   tagline: 'Building intelligent systems at the frontier of AI & engineering.',
-  bio: 'I architect and engineer full-stack systems with deep expertise in AI, distributed infrastructure, and real-time interfaces. Currently building the next generation of intelligent software.',
-  location: 'Earth, Sol System',
+  bio: 'Full-stack AI engineer with 8+ years of experience building scalable MERN, Python and cloud applications — from real-time ERP systems and HIPAA-compliant healthcare platforms to LLM, RAG and AI-agent solutions.',
+  location: 'Lahore, Pakistan',
   availability: 'Open to opportunities',
-  email: 'hello@yourdomain.com',
+  email: 'asifsharif190@gmail.com',
 
   // ── Social Links ───────────────────────────────────────────
   links: {
-    github: 'https://github.com/yourusername',
-    linkedin: 'https://linkedin.com/in/yourusername',
+    github: 'https://github.com/asif92',
+    linkedin: 'https://linkedin.com/in/asifsharifshahid/',
     twitter: 'https://twitter.com/yourusername',
     resume: '/resume.pdf',
   },
@@ -43,7 +43,7 @@ export const siteConfig = {
   // ── SEO & Meta ─────────────────────────────────────────────
   url: 'https://yourdomain.com',
   ogImage: '/images/og.png',
-  keywords: ['software engineer', 'AI engineer', 'full-stack developer', 'portfolio'] as string[],
+  keywords: ['Asif Sharif Shahid', 'full-stack AI engineer', 'MERN stack', 'Python', 'Django', 'LLM', 'RAG', 'AI agents', 'portfolio'] as string[],
 } as const;
 
 export type SiteConfig = typeof siteConfig;

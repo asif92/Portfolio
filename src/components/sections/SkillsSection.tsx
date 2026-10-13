@@ -31,10 +31,10 @@ export function SkillsSection() {
           <SectionHeading
             nodeId="// 03 — MATRIX"
             title="Neural Matrix"
-            subtitle="The technical stack spanning languages, frameworks, AI systems, and graphics. Each node represents a core competency in active use."
+            subtitle="The technical stack spanning languages, frameworks, AI systems, databases, and cloud infrastructure. Each node represents a core competency in active use."
           />
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {(Object.keys(grouped) as SkillCategory[]).map((category) => {
               const { label, color } = skillCategories[category];
               const categorySkills = grouped[category];
