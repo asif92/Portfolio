@@ -183,7 +183,8 @@ export function HeroSection() {
           const el = document.getElementById('projects');
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }}
-        className="content-layer absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-auto cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-core/50 rounded-md p-2 transition-colors"
+        style={{ x: '-50%' }}
+        className="content-layer absolute bottom-8 left-1/2 flex flex-col items-center gap-2 pointer-events-auto cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-core/50 rounded-md p-2 transition-colors"
         aria-label="Scroll to Core Architectures section"
       >
         <span className="font-mono text-[9px] tracking-[0.3em] text-ceramic-muted/40 uppercase group-hover:text-cyan-core transition-colors duration-200">

@@ -29,11 +29,11 @@ export function ProjectsSection() {
           <SectionHeading
             nodeId="// 02 — SYSTEMS"
             title="Core Architectures"
-            subtitle="Engineering systems and products built at scale. Each project represents a distinct challenge in distributed computing, AI infrastructure, or interactive media."
+            subtitle="AI systems and products built for real-world workflows. Each project tackles a distinct challenge in agentic AI, retrieval-augmented generation, or human-in-the-loop automation."
           />
 
           {/* Project cards grid */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {projects.map((project) => (
               <GlassPanel
                 key={project.id}
@@ -53,13 +53,13 @@ export function ProjectsSection() {
                   </div>
 
                   {/* External link */}
-                  {project.links.demo && (
+                  {(project.links.demo ?? project.links.case_study) && (
                     <a
-                      href={project.links.demo}
+                      href={project.links.demo ?? project.links.case_study}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-1.5 text-ceramic-muted/50 hover:text-cyan-core transition-colors"
-                      aria-label={`View ${project.title} demo`}
+                      aria-label={`View ${project.title} ${project.links.demo ? 'demo' : 'case study'}`}
                     >
                       <ArrowUpRight size={14} />
                     </a>
