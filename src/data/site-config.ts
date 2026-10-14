@@ -18,14 +18,14 @@ export const siteConfig = {
   links: {
     github: 'https://github.com/asif92',
     linkedin: 'https://linkedin.com/in/asifsharifshahid/',
-    resume: '/resume.pdf',
+    resume: 'https://github.com/asif92', // TODO: replace with resume link
   },
 
   // ── Lab / Robot Character ──────────────────────────────────
   character: {
     name: 'A.R.I.A.',
     fullName: 'Autonomous Research & Intelligence Assistant',
-    version: 'v2.4.1',
+    version: 'v1.0.0',
     status: 'OPTIMAL',
     uptime: '99.98%',
   },

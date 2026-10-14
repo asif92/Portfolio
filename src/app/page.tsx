@@ -7,7 +7,7 @@ import { ContactSection } from '@/components/sections/ContactSection';
 import { siteConfig } from '@/data/site-config';
 
 /**
- * Home Page — Project NEXUS // Autonomous AI Lab
+ * Home Page — Project TecXra // Autonomous AI Lab
  *
  * Sections:
  *  01 → HeroSection      "The Awakening"
@@ -61,7 +61,7 @@ export default function HomePage() {
         <div className="content-container">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <span className="font-mono text-[10px] text-ceramic-muted/40 tracking-widest">
-              © {new Date().getFullYear()} {siteConfig.name} — Project NEXUS
+              © {new Date().getFullYear()} {siteConfig.name} — Project TecXra
             </span>
             <div className="flex items-center gap-2 font-mono text-[10px] text-ceramic-muted/40">
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-core animate-pulse-slow" aria-hidden="true" />
