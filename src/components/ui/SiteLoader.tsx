@@ -17,7 +17,7 @@ const BOOT_LINES = [
   'INITIALIZING NEURAL CORE',
   'CALIBRATING OPTICS',
   'SYNCING PARTICLE FIELD',
-  'ASSEMBLING A.R.I.A.',
+  'ASSEMBLING ASIF-01',
 ];
 
 /**
@@ -114,7 +114,7 @@ export function SiteLoader({ ready, onDone }: SiteLoaderProps) {
             />
           </div>
 
-          <p className="mb-4 font-mono text-xs tracking-[0.35em] text-cyan-core">A.R.I.A. // BOOT</p>
+          <p className="mb-4 font-mono text-xs tracking-[0.35em] text-cyan-core">ASIF-01 // BOOT</p>
 
           {/* progress bar */}
           <div className="h-[3px] w-64 overflow-hidden rounded-full bg-white/10">

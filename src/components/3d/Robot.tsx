@@ -53,7 +53,7 @@ export interface RobotProps {
 
 /**
  * Robot
- * The central procedural 3D assistant (A.R.I.A.) inspired by the concept design.
+ * The central procedural 3D assistant (ASIF-01) inspired by the concept design.
  * Features:
  * - Ceramic white armor shell + dark mechanical inner joints
  * - Glowing electric cyan eyes, chest reactor, ear dials, and foot energy strips

@@ -23,8 +23,8 @@ export const siteConfig = {
 
   // ── Lab / Robot Character ──────────────────────────────────
   character: {
-    name: 'A.R.I.A.',
-    fullName: 'Autonomous Research & Intelligence Assistant',
+    name: 'ASIF-01',
+    fullName: 'Portfolio Guide Unit 01',
     version: 'v1.0.0',
     status: 'OPTIMAL',
     uptime: '99.98%',

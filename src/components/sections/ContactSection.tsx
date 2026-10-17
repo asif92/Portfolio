@@ -47,7 +47,7 @@ export function ContactSection() {
                 variants={fadeUpVariants}
                 className="font-mono text-sm space-y-2 mb-8"
               >
-                <p className="text-ceramic-muted/40">$ aria --connect --mode=async</p>
+                <p className="text-ceramic-muted/40">$ asif-01 --connect --mode=async</p>
                 <p className="text-cyan-core/70">
                   <span className="text-ceramic-muted/40">{'>'} </span>
                   Uplink established. Ready for transmission.

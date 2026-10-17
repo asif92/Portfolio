@@ -7,7 +7,7 @@ import * as THREE from 'three';
 import { useMousePosition } from '@/hooks/useMousePosition';
 
 /**
- * AriaRobot — procedural 3D robot character (A.R.I.A.)
+ * AriaRobot — procedural 3D robot character (ASIF-01)
  *
  * Constructed entirely from Three.js primitives to match the concept image:
  * - Rounded spherical head with visor and cyan glowing eyes

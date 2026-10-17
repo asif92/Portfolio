@@ -16,7 +16,7 @@ interface HeroSceneProps {
 /**
  * HeroScene — the full 3D laboratory scene for the Hero section.
  * Renders the abstract AI laboratory environment in deep space
- * with the procedural Robot (A.R.I.A.) as the visual focal point.
+ * with the procedural Robot (ASIF-01) as the visual focal point.
  */
 export default function HeroScene({ onReady }: HeroSceneProps) {
   const { isMobile, isTablet, prefersReducedMotion } = useMediaQuery();
