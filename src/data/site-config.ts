@@ -35,9 +35,10 @@ export const siteConfig = {
     { id: '01', label: 'Awakening', href: '#hero' },
     { id: '02', label: 'Systems',   href: '#projects' },
     { id: '03', label: 'Matrix',    href: '#skills' },
+    { id: '04', label: 'Telemetry', href: '#achievements' },
     // Re-enable once src/data/experience.ts has entries:
-    // { id: '04', label: 'Log',       href: '#experience' },
-    { id: '05', label: 'Uplink',    href: '#contact' },
+    // { id: '05', label: 'Log',       href: '#experience' },
+    { id: '06', label: 'Uplink',    href: '#contact' },
   ],
 
   // ── SEO & Meta ─────────────────────────────────────────────

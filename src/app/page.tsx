@@ -2,6 +2,7 @@ import { NavBar } from '@/components/navigation/NavBar';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ProjectsSection } from '@/components/sections/ProjectsSection';
 import { SkillsSection } from '@/components/sections/SkillsSection';
+import { AchievementsSection } from '@/components/sections/AchievementsSection';
 import { ExperienceSection } from '@/components/sections/ExperienceSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { siteConfig } from '@/data/site-config';
@@ -12,10 +13,11 @@ import { siteConfig } from '@/data/site-config';
  * Sections:
  *  01 → HeroSection      "The Awakening"
  *  02 → ProjectsSection  "Core Architectures"
- *  03 → SkillsSection    "Neural Matrix"
- *  05 → ContactSection   "Quantum Uplink"
+ *  03 → SkillsSection       "Neural Matrix"
+ *  04 → AchievementsSection "Impact Telemetry"
+ *  06 → ContactSection      "Quantum Uplink"
  *
- * Note: Section 04 (Experience / Lab Logs) will be added in the next phase.
+ * Note: Section 05 (Experience / Mission Log) renders once experience data is added.
  */
 export default function HomePage() {
   return (
@@ -43,6 +45,14 @@ export default function HomePage() {
         </div>
 
         <SkillsSection />
+
+        <div className="section-wrapper py-0">
+          <div className="content-container">
+            <div className="cyan-line" aria-hidden="true" />
+          </div>
+        </div>
+
+        <AchievementsSection />
 
         {/* Renders only when src/data/experience.ts has entries */}
         <ExperienceSection />

@@ -10,7 +10,7 @@ import { siteConfig } from '@/data/site-config';
 import { Mail, Github, Linkedin, Instagram, Terminal } from 'lucide-react';
 
 /**
- * ContactSection — Section 05: "Quantum Uplink"
+ * ContactSection — Section 06: "Quantum Uplink"
  * Terminal-style contact interface.
  */
 export function ContactSection() {
@@ -20,7 +20,7 @@ export function ContactSection() {
         <AnimatedSection className="flex flex-col gap-16">
 
           <SectionHeading
-            nodeId="// 05 — UPLINK"
+            nodeId="// 06 — UPLINK"
             title="Quantum Uplink"
             subtitle="Open a direct communication channel. Response time within 24 hours."
             align="center"

@@ -8,7 +8,7 @@ import { fadeUpVariants } from '@/lib/motion-variants';
 import { experience } from '@/data/experience';
 
 /**
- * ExperienceSection — Section 04: "Lab Logs"
+ * ExperienceSection — Section 05: "Mission Log"
  * Renders nothing until src/data/experience.ts has entries.
  */
 export function ExperienceSection() {
@@ -19,7 +19,7 @@ export function ExperienceSection() {
       <div className="content-container">
         <AnimatedSection className="flex flex-col gap-16">
           <SectionHeading
-            nodeId="// 04 — LOG"
+            nodeId="// 05 — LOG"
             title="Mission Log"
             subtitle="A timeline of the systems I've built and the teams I've built them with."
           />
