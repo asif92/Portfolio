@@ -20,7 +20,8 @@ export type SkillCategory =
   | 'ai-ml'
   | 'data'
   | 'infra'
-  | 'domain';
+  | 'domain'
+  | 'ehr';
 
 export const skillCategories: Record<SkillCategory, { label: string; color: string }> = {
   languages:    { label: 'Languages',           color: '#00F0FF' },
@@ -31,6 +32,7 @@ export const skillCategories: Record<SkillCategory, { label: string; color: stri
   data:         { label: 'Databases',           color: '#FFCC33' },
   infra:        { label: 'Cloud & DevOps',      color: '#FF8800' },
   domain:       { label: 'Domain Expertise',    color: '#FF3366' },
+  ehr:          { label: 'EHR Integration',     color: '#FF66CC' },
 };
 
 export const skills: SkillNode[] = [
@@ -58,6 +60,7 @@ export const skills: SkillNode[] = [
 
   // APIs & Architecture
   { id: 'rest',        label: 'REST APIs',         category: 'architecture', level: 5 },
+  { id: 'api-integration', label: 'Third-party API Integration', category: 'architecture', level: 5 },
   { id: 'graphql',     label: 'GraphQL',           category: 'architecture', level: 4 },
   { id: 'realtime',    label: 'Socket.IO / WebSockets', category: 'architecture', level: 5 },
   { id: 'microservices', label: 'Microservices',   category: 'architecture', level: 4 },
@@ -93,4 +96,16 @@ export const skills: SkillNode[] = [
   { id: 'erp',         label: 'ERP Systems',       category: 'domain',       level: 5 },
   { id: 'healthtech',  label: 'Healthcare Tech',   category: 'domain',       level: 4 },
   { id: 'sysdesign',   label: 'System Architecture', category: 'domain',     level: 4 },
+
+  // EHR integration
+  { id: 'epic',        label: 'Epic',              category: 'ehr',          level: 4 },
+  { id: 'cerner',      label: 'Oracle Health (Cerner)', category: 'ehr',     level: 4 },
+  { id: 'athena',      label: 'athenahealth',      category: 'ehr',          level: 4 },
+  { id: 'meditech',    label: 'MEDITECH',          category: 'ehr',          level: 4 },
+  { id: 'ecw',         label: 'eClinicalWorks',    category: 'ehr',          level: 4 },
+  { id: 'nextgen',     label: 'NextGen Healthcare', category: 'ehr',         level: 4 },
+  { id: 'veradigm',    label: 'Veradigm (Allscripts)', category: 'ehr',      level: 4 },
+  { id: 'modmed',      label: 'ModMed',            category: 'ehr',          level: 4 },
+  { id: 'greenway',    label: 'Greenway Health',   category: 'ehr',          level: 4 },
+  { id: 'cpsi',        label: 'CPSI / TruBridge',  category: 'ehr',          level: 4 },
 ];
