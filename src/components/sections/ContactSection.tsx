@@ -7,7 +7,7 @@ import { CyberButton } from '@/components/ui/CyberButton';
 import { motion } from 'framer-motion';
 import { fadeUpVariants } from '@/lib/motion-variants';
 import { siteConfig } from '@/data/site-config';
-import { Mail, Github, Linkedin, FileText, Terminal } from 'lucide-react';
+import { Mail, Github, Linkedin, Instagram, Terminal } from 'lucide-react';
 
 /**
  * ContactSection — Section 05: "Quantum Uplink"
@@ -97,15 +97,15 @@ export function ContactSection() {
                     <span>LinkedIn</span>
                   </CyberButton>
                   <CyberButton
-                    href={siteConfig.links.resume}
+                    href={siteConfig.links.instagram}
                     variant="secondary"
                     size="sm"
                     external
                     className="justify-center"
-                    aria-label="Download resume"
+                    aria-label="Visit Instagram"
                   >
-                    <FileText size={13} />
-                    <span>Résumé</span>
+                    <Instagram size={13} />
+                    <span>Instagram</span>
                   </CyberButton>
                 </div>
               </motion.div>

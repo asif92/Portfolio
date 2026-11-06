@@ -18,7 +18,7 @@ export const siteConfig = {
   links: {
     github: 'https://github.com/asif92',
     linkedin: 'https://linkedin.com/in/asifsharifshahid/',
-    resume: 'https://github.com/asif92', // TODO: replace with resume link
+    instagram: 'https://www.instagram.com/asifsharif.shahid',
   },
 
   // ── Lab / Robot Character ──────────────────────────────────
